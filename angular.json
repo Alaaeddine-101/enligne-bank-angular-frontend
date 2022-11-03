@@ -92,10 +92,14 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+            ]
           }
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "c6ead1c1-2852-41af-bdb0-f7395b996519"
   }
 }

@@ -1,0 +1,27 @@
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header">
+          <strong>
+            {{customerName}}
+          </strong>  Accounts :
+        </div>
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Account type</th>
+                        <th>Balance</th>
+                        <th>Date of creation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let account of customerAccounts">
+                        <td>{{account.type}}</td>
+                        <td>{{account.balance | number: '1.2-2'}}</td>
+                        <td>{{account.createdDate | date:'dd-MM-yyyy:HH:mm:ss'}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

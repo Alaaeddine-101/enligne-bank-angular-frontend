@@ -1,0 +1,30 @@
+<div class="container mt-3">
+    <div class="card col-md-8 offset-2">
+        <div class="card-header">New Customer</div>
+        <div class="card-body">
+            <form [formGroup]="newCustomerFormGroup" (ngSubmit)="handleSaveCustomer()">
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Name</span>
+                    <input type="text" class="form-control" formControlName="name" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    <span   class=" text-danger"
+                    *ngIf="newCustomerFormGroup.controls['name'].touched 
+                    && newCustomerFormGroup.controls['name'].errors 
+                    && newCustomerFormGroup.controls['name'].errors!['required']" 
+                   >Name is required !!</span>
+                  </div>
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Email</span>
+                    <input type="text" class="form-control" formControlName="email" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    <span   class=" text-danger"
+                    *ngIf="newCustomerFormGroup.controls['email'].touched 
+                    && newCustomerFormGroup.controls['email'].errors 
+                    && newCustomerFormGroup.controls['email'].errors!['required']" 
+                   >Name is required !!</span>
+                  </div>
+                  <div class="input-group mb-3">
+                    <button [disabled]="!newCustomerFormGroup.valid" class="btn btn-info">Add</button>
+                  </div>
+            </form>
+        </div>
+    </div>
+</div>

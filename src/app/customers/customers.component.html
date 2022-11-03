@@ -1,0 +1,61 @@
+<div class="container mt-2">
+    <ng-container *ngIf="customers | async as listCustomers; else failureOrLoading">
+        <div class="card" >
+            <div class="card-header">
+                Customers
+            </div>
+            <div class="card-body">
+                <div *ngIf="searchFormGroup">
+                    <!-- {{this.searchFormGroup.value | json}} -->
+                    <form [formGroup]="searchFormGroup" (ngSubmit)="handleSearchCustomers()">
+                        <div class="input-group">
+                            <span class="input-group-text">Keyword</span>
+                            <input type="text" formControlName="keyword" class="form-control" aria-label="With textarea">
+                            <button class="btn btn-outline-secondary" >
+                                <i class="bi bi-search">
+
+                                </i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <table   class="table">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let c of customers | async">
+                            <td>{{c.id}}</td>
+                            <td>{{c.name}}</td>
+                            <td>{{c.email}}</td>
+                            <td>
+                                <button class="btn btn-danger" (click)="handleDeleteCustomer(c)">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                            </td>
+                            <td>
+                                <button class="btn btn-success" (click)="handleCustomerAccount(c)">
+                                    Accounts
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </ng-container>
+    <ng-template #failureOrLoading >
+        <ng-container *ngIf="errorMsg; else loading">
+            <div class="alert alert-danger" role="alert">
+                {{errorMsg}}
+              </div>
+        </ng-container>
+        <ng-template #loading>
+            loading ...
+        </ng-template>
+    </ng-template>
+</div>
